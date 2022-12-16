@@ -1,0 +1,157 @@
+// 1. Require 'apollo-server'
+const { ApolloServer } = require('apollo-server');
+
+const typeDefs = `
+type Track {
+    track_id: ID!
+    movie_title: String!
+    track_title: String!
+    tempo_name: String!
+    tempo_bpm: Int!
+    composer: Composer!
+    instruments: [Instrument!]!
+  }
+  
+  type Instrument {
+    instrument_id: ID!
+    instrument_group: String!
+    instrument_name: String!
+  }
+  
+  type Composer {
+    composer_id: ID!
+    composer_name: String!
+  }
+
+  type Query {
+    tracks: [Track!]!
+  }
+`
+
+// 1. A variable that we will increment for unique ids
+var _id = 0
+
+var tracks = [
+    {
+        track_id: '1',
+        movie_title: 'Starting Out Slow',
+        track_title: 'Stillness of the mind',
+        tempo_name: 'fast',
+        tempo_bpm: 126,
+        composer: {
+          composer_id: '1',
+          composer_name: 'Abel Korzeniowski',
+        },
+        instruments: [
+          {
+            instrument_id: '101',
+            instrument_group: 'Brass',
+            instrument_name: 'Alpine horn',
+          },
+        ],
+      },
+      {
+        track_id: '2',
+        movie_title: '1-2 Guitar Hero!',
+        track_title: 'Rhythm of the Night',
+        tempo_name: 'medium',
+        tempo_bpm: 85,
+        composer: {
+          composer_id: '2',
+          composer_name: 'Fast Slow Stephanson',
+        },
+        instruments: [
+          {
+            instrument_id: '104',
+            instrument_group: 'Guitar/stringed',
+            instrument_name: 'Electric guitar',
+          },
+        ],
+      },
+      {
+        track_id: '3',
+        movie_title: 'American Reunion',
+        track_title: 'The Slow Slowdown',
+        tempo_name: 'medium',
+        tempo_bpm: 90,
+        composer: {
+          composer_id: '3',
+          composer_name: 'Josh Talbot',
+        },
+        instruments: [
+          {
+            instrument_id: '102',
+            instrument_group: 'Guitar/stringed',
+            instrument_name: 'Acoustic guitar',
+          },
+          {
+            instrument_id: '103',
+            instrument_group: 'Guitar/stringed',
+            instrument_name: 'Banjo',
+          },
+        ],
+      },
+      {
+        track_id: '4',
+        movie_title: 'Machiavelli Rises',
+        track_title: 'The Piano in The Night',
+        tempo_name: 'slow',
+        tempo_bpm: 82,
+        composer: {
+          composer_id: '3',
+          composer_name: 'Josh Talbot',
+        },
+        instruments: [
+          {
+            instrument_id: '105',
+            instrument_group: 'Keyboard',
+            instrument_name: 'Piano',
+          },
+        ],
+      },
+      {
+        track_id: '5',
+        movie_title: 'Fast and the Furious',
+        track_title: 'Furious Abel Drum Solo',
+        tempo_name: 'medium',
+        tempo_bpm: 120,
+        composer: {
+          composer_id: '4',
+          composer_name: 'Medium Talbot',
+        },
+        instruments: [
+          {
+            instrument_id: '104',
+            instrument_group: 'Guitar/stringed',
+            instrument_name: "Electric guitar"
+          },
+          {
+            instrument_id: '106',
+            instrument_group: 'Percussion',
+            instrument_name: "Drums"
+          }
+        ]
+    }    
+]
+
+const resolvers = {
+    Query: {
+        tracks: () => tracks
+    }
+
+    // Photo: {
+    //     url: parent => `http://yoursite.com/img/${parent.id}.jpg`
+    // }
+}
+
+// 2. Create a new instance of the server
+// 3. Send it an object with typeDefs (the schema) and resolvers
+const server = new ApolloServer({
+    typeDefs,
+    resolvers
+})
+
+// 4. Call listener on the server to launch the web server
+server
+    .listen()
+    .then(({url}) => console.log(`GraphQL Service running on ${url}`))
