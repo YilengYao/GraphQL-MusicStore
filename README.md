@@ -14,3 +14,5 @@ Run the following command
 ```
 npm start
 ```
+
+go to http://localhost:4000/playground and start making queries
