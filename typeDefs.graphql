@@ -22,5 +22,5 @@ type Composer {
 }
 
 type Query {
-    tracks: [Track!]!
+    allTracks: [Track!]!
 }

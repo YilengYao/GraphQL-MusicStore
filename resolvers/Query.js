@@ -1,3 +1,5 @@
 module.exports = {
-    tracks: (parent, args, { tracks }) => tracks
+    allTracks: (parent, args, { tracks }) => {
+        return tracks
+    }
 }
