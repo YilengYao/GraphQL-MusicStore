@@ -16,7 +16,7 @@ var tracks = [
         track_id: 1,
         movie_title: 'Starting Out Slow',
         track_title: 'Stillness of the mind',
-        tempo_name: 'fast',
+        tempo_name: 'FAST',
         tempo_bpm: 126,
         composer_id: 1
       },
@@ -24,7 +24,7 @@ var tracks = [
         track_id: 2,
         movie_title: '1-2 Guitar Hero!',
         track_title: 'Rhythm of the Night',
-        tempo_name: 'medium',
+        tempo_name: 'MEDIUM',
         tempo_bpm: 85,
         composer_id: 2
       },
@@ -32,7 +32,7 @@ var tracks = [
         track_id: 3,
         movie_title: 'American Reunion',
         track_title: 'The Slow Slowdown',
-        tempo_name: 'medium',
+        tempo_name: 'MEDIUM',
         tempo_bpm: 90,
         composer_id: 3
       },
@@ -40,7 +40,7 @@ var tracks = [
         track_id: 4,
         movie_title: 'Machiavelli Rises',
         track_title: 'The Piano in The Night',
-        tempo_name: 'slow',
+        tempo_name: 'SLOW',
         tempo_bpm: 82,
         composer_id: 3
       },
@@ -48,7 +48,7 @@ var tracks = [
         track_id: 5,
         movie_title: 'Fast and the Furious',
         track_title: 'Furious Abel Drum Solo',
-        tempo_name: 'medium',
+        tempo_name: 'MEDIUM',
         tempo_bpm: 120,
         composer_id: 4
     }    

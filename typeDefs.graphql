@@ -1,10 +1,16 @@
 scalar DateTime
 
+enum TempoName {
+    FAST
+    MEDIUM
+    SLOW
+}
+
 type Track {
     track_id: ID!
     movie_title: String!
     track_title: String!
-    tempo_name: String!
+    tempo_name: TempoName!
     tempo_bpm: Int!
     composer: Composer!
     instruments: [Instrument!]!
