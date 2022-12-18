@@ -41,6 +41,11 @@ type Composer {
 
 type Query {
     allTracks(
+        tempo_name: TempoName
+        movie_title: String
+        composer_name: String
+        instrument_group: String
+        instrument_name: String
         sort: SortDirection = DESCENDING
         sortBy: SortablePhotoField = track_id
     ): [Track!]!
