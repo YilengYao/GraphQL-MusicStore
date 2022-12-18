@@ -1,5 +1,9 @@
 // 1. Require 'apollo-server'
-const { ApolloServer } = require('apollo-server');
+const { ApolloServer } = require('apollo-server-express');
+const express = require('express');
+const { GraphQLScalarType } = require('graphql');
+const expressPlayground = require('graphql-playground-middleware-express').default;
+const { readFileSync } = require('fs');
 
 const typeDefs = `
 type Track {
@@ -138,20 +142,32 @@ const resolvers = {
     Query: {
         tracks: () => tracks
     }
-
-    // Photo: {
-    //     url: parent => `http://yoursite.com/img/${parent.id}.jpg`
-    // }
 }
 
-// 2. Create a new instance of the server
-// 3. Send it an object with typeDefs (the schema) and resolvers
-const server = new ApolloServer({
-    typeDefs,
-    resolvers
-})
+var app = express();
 
-// 4. Call listener on the server to launch the web server
-server
-    .listen()
-    .then(({url}) => console.log(`GraphQL Service running on ${url}`))
+let server = null;
+async function startServer() {
+
+    // const context = { photos, users, tags }
+
+    // server = new ApolloServer({ typeDefs, resolvers, context});
+
+    server = new ApolloServer({ typeDefs, resolvers });
+
+    await server.start();
+
+    // 3. Call `applyMiddleware()` to allow middleware mounted on the same path
+    server.applyMiddleware({ app });
+}
+startServer();
+
+// 4. Create a home route
+app.get('/', (req, res) => res.end('Welcome to the PhotoShare API'))
+
+app.get('/playground', expressPlayground({ endpoint: '/graphql'}))
+
+
+// 5. Listen to a specific port
+app.listen( { port: 4000 }, () => console.log(`GraphQL Server running @ http://localhost:4000${server.graphqlPath}`) 
+)
