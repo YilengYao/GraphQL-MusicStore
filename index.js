@@ -5,32 +5,7 @@ const { GraphQLScalarType } = require('graphql');
 const expressPlayground = require('graphql-playground-middleware-express').default;
 const { readFileSync } = require('fs');
 
-const typeDefs = `
-type Track {
-    track_id: ID!
-    movie_title: String!
-    track_title: String!
-    tempo_name: String!
-    tempo_bpm: Int!
-    composer: Composer!
-    instruments: [Instrument!]!
-  }
-  
-  type Instrument {
-    instrument_id: ID!
-    instrument_group: String!
-    instrument_name: String!
-  }
-  
-  type Composer {
-    composer_id: ID!
-    composer_name: String!
-  }
-
-  type Query {
-    tracks: [Track!]!
-  }
-`
+const typeDefs = readFileSync('./typeDefs.graphql', 'UTF-8')
 
 // 1. A variable that we will increment for unique ids
 var _id = 0
