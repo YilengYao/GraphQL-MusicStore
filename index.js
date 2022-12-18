@@ -6,6 +6,7 @@ const expressPlayground = require('graphql-playground-middleware-express').defau
 const { readFileSync } = require('fs');
 
 const typeDefs = readFileSync('./typeDefs.graphql', 'UTF-8')
+const resolvers = require('./resolvers');
 
 // 1. A variable that we will increment for unique ids
 var _id = 0
@@ -113,22 +114,20 @@ var tracks = [
     }    
 ]
 
-const resolvers = {
-    Query: {
-        tracks: () => tracks
-    }
-}
+// const resolvers = {
+//     Query: {
+//         tracks: () => tracks
+//     }
+// }
 
 var app = express();
 
 let server = null;
 async function startServer() {
 
-    // const context = { photos, users, tags }
+    const context = { tracks }
 
-    // server = new ApolloServer({ typeDefs, resolvers, context});
-
-    server = new ApolloServer({ typeDefs, resolvers });
+    server = new ApolloServer({ typeDefs, resolvers, context});
 
     await server.start();
 
@@ -141,7 +140,6 @@ startServer();
 app.get('/', (req, res) => res.end('Welcome to the PhotoShare API'))
 
 app.get('/playground', expressPlayground({ endpoint: '/graphql'}))
-
 
 // 5. Listen to a specific port
 app.listen( { port: 4000 }, () => console.log(`GraphQL Server running @ http://localhost:4000${server.graphqlPath}`) 
