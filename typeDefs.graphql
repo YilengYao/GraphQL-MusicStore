@@ -6,6 +6,18 @@ enum TempoName {
     SLOW
 }
 
+enum SortDirection {
+    ASCENDING
+    DESCENDING
+}
+
+enum SortablePhotoField {
+    track_id
+    movie_title
+    track_title
+    tempo_bpm
+}
+
 type Track {
     track_id: ID!
     movie_title: String!
@@ -28,5 +40,8 @@ type Composer {
 }
 
 type Query {
-    allTracks: [Track!]!
+    allTracks(
+        sort: SortDirection = DESCENDING
+        sortBy: SortablePhotoField = track_id
+    ): [Track!]!
 }
