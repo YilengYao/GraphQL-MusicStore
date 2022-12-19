@@ -57,8 +57,6 @@ module.exports = {
     },
 
     tracks: (parent, { track_ids, movie_titles, track_titles }, { tracks }) => {
-        console.log(track_ids)
-        console.log(parent)
         if (track_ids) {
             tracks =  tracks.filter(track => track_ids.includes(track.track_id.toString()))
         }
