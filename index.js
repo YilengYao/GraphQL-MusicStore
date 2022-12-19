@@ -18,7 +18,9 @@ var tracks = [
         track_title: 'Stillness of the mind',
         tempo_name: 'FAST',
         tempo_bpm: 126,
-        composer_id: 1
+        composer_id: 1,
+        inventory: 12,
+        created: "3-28-1977"
       },
       {
         track_id: 2,
@@ -26,7 +28,9 @@ var tracks = [
         track_title: 'Rhythm of the Night',
         tempo_name: 'MEDIUM',
         tempo_bpm: 85,
-        composer_id: 2
+        composer_id: 2,
+        inventory: 0,
+        created: "1-2-1985"    
       },
       {
         track_id: 3,
@@ -34,7 +38,9 @@ var tracks = [
         track_title: 'The Slow Slowdown',
         tempo_name: 'MEDIUM',
         tempo_bpm: 90,
-        composer_id: 3
+        composer_id: 3,
+        inventory: 1,
+        created: "2022-11-15T19:09:57.308Z"
       },
       {
         track_id: 4,
@@ -42,7 +48,9 @@ var tracks = [
         track_title: 'The Piano in The Night',
         tempo_name: 'SLOW',
         tempo_bpm: 82,
-        composer_id: 3
+        composer_id: 3,
+        inventory: 0,
+        created: "2022-12-03T19:09:57.308Z"
       },
       {
         track_id: 5,
@@ -50,7 +58,9 @@ var tracks = [
         track_title: 'Furious Abel Drum Solo',
         tempo_name: 'MEDIUM',
         tempo_bpm: 120,
-        composer_id: 4
+        composer_id: 4,
+        inventory: 2,
+        created: "2022-12-15T19:09:57.308Z"
     }    
 ]
 

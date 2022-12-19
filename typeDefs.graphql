@@ -31,6 +31,8 @@ type Track {
     tempo_bpm: Int!
     composer: Composer!
     instruments: [Instrument!]!
+    in_stock: Boolean!
+    created: DateTime!
 }
 
 type Instrument {
@@ -53,6 +55,7 @@ type Query {
         instrument_name: String
         tempo_range: TempoRange
         sort: SortDirection = DESCENDING
+        after: DateTime
         sortBy: SortablePhotoField = track_id
     ): [Track!]!
 }

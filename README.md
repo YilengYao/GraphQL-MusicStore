@@ -128,3 +128,27 @@ query tempoNameSortByBPM{
   }
 }
 ```
+
+Filter after a certain date
+```
+query latest {
+  allTracks(after: "1-2-2022") {
+    track_id
+    movie_title
+    track_title
+    tempo_name
+    tempo_bpm
+    composer {
+      composer_id
+      composer_name
+    }
+    instruments {
+      instrument_id
+      instrument_group
+      instrument_name
+    }
+    in_stock
+    created
+  }
+}
+```

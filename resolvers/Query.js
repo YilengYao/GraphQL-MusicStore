@@ -1,5 +1,5 @@
 module.exports = {
-    allTracks: (parent, { movie_title, tempo_name, composer_name, instrument_group, instrument_name, tempo_range, sort, sortBy }, { tracks, composers, track_instruments, instruments }) => {
+    allTracks: (parent, { movie_title, tempo_name, composer_name, instrument_group, instrument_name, tempo_range, after, sort, sortBy }, { tracks, composers, track_instruments, instruments }) => {
    // Sort the tracks if sortBy and sort arguments are provided
    if (composer_name) {
         tracks = tracks.filter( track => 
@@ -34,6 +34,9 @@ module.exports = {
    }
    if (tempo_range) {
      tracks = tracks.filter(track => tempo_range.min_tempo <= track.tempo_bpm && track.tempo_bpm <= tempo_range.max_tempo)
+   }
+   if (after) {
+    tracks = tracks.filter(track => new Date(track.created) > new Date(after))
    }
     if (sortBy && sort) {
       tracks = tracks.sort((a, b) => {
