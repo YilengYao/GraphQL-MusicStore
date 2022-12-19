@@ -18,6 +18,11 @@ enum SortablePhotoField {
     tempo_bpm
 }
 
+input TempoRange {
+    min_tempo: Int!
+    max_tempo: Int!
+}
+
 type Track {
     track_id: ID!
     movie_title: String!
@@ -46,6 +51,7 @@ type Query {
         composer_name: String
         instrument_group: String
         instrument_name: String
+        tempo_range: TempoRange
         sort: SortDirection = DESCENDING
         sortBy: SortablePhotoField = track_id
     ): [Track!]!
