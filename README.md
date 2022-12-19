@@ -37,6 +37,8 @@ query {
       instrument_name
       instrument_group
     }
+    in_library
+    created
   }
 }
 ```
@@ -59,6 +61,8 @@ query tempoName{
       instrument_group
       instrument_name
     }
+    in_library
+    created
   }
 }
 ```
@@ -81,6 +85,8 @@ query tempoRange {
       instrument_group
       instrument_name
     }
+    in_library
+    created
   }
 }
 ```
@@ -103,6 +109,8 @@ query tempoNameComposer{
       instrument_group
       instrument_name
     }
+    in_library
+    created
   }
 }
 ```
@@ -125,6 +133,8 @@ query tempoNameSortByBPM{
       instrument_group
       instrument_name
     }
+    in_library
+    created
   }
 }
 ```
@@ -147,8 +157,104 @@ query latest {
       instrument_group
       instrument_name
     }
-    in_stock
+    in_library
     created
+  }
+}
+```
+
+Filter by availability
+```
+query inLibrary {
+  allTracks(in_library: true) {
+    track_id
+    movie_title
+    track_title
+    tempo_name
+    tempo_bpm
+    composer {
+      composer_id
+      composer_name
+    }
+    instruments {
+      instrument_id
+      instrument_group
+      instrument_name
+    }
+    in_library
+    created
+  }
+}
+```
+
+Find tracks by track ids
+```
+query trackIds {
+    tracks(track_ids: [1, 3, 5]) {
+      track_id
+      movie_title
+      track_title
+      tempo_name
+      tempo_bpm
+      composer {
+        composer_id
+        composer_name
+      }
+      instruments {
+        instrument_id
+        instrument_group
+        instrument_name
+      }
+      in_library
+      created
+  }
+}
+```
+
+Find tracks by movie_title
+```
+query movieTitle {
+    tracks(movie_titles: ["Starting Out Slow", "Stillness of the mind"]) {
+      track_id
+      movie_title
+      track_title
+      tempo_name
+      tempo_bpm
+      composer {
+        composer_id
+        composer_name
+      }
+      instruments {
+        instrument_id
+        instrument_group
+        instrument_name
+      }
+      in_library
+      created
+  }
+}
+```
+
+Find tracks by track_title
+```
+query trackTitle {
+    tracks(track_titles: ["Rhythm of the Night"]) {
+      track_id
+      movie_title
+      track_title
+      tempo_name
+      tempo_bpm
+      composer {
+        composer_id
+        composer_name
+      }
+      instruments {
+        instrument_id
+        instrument_group
+        instrument_name
+      }
+      in_library
+      created
   }
 }
 ```

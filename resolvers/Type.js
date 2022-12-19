@@ -10,7 +10,7 @@ module.exports = {
             .map(track_instrument => track_instrument.instrument_id)
             .map(instrumentID => instruments.find(instrument => instrument.instrument_id === instrumentID))
         ,
-        in_stock: (parent, args, { tracks }) => {
+        in_library: (parent, args, { tracks }) => {
             return tracks.find(track => parent.track_id === track.track_id).inventory > 0
         }
     },
